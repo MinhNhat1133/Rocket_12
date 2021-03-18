@@ -16,12 +16,12 @@ CREATE TABLE `position` (
 DROP TABLE IF EXISTS `Account` ;
 CREATE TABLE  `Account` (
 	AccountID				SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    Email					VARCHAR(50) NOT NULL UNIQUE KEY,
+    Email					VARCHAR(50) UNIQUE KEY DEFAULT('Unknown'), 
     Username				NVARCHAR(50) NOT NULL CHECK (length(Username)>=3),
     FullName				NVARCHAR(50) NOT NULL,
     DepartmentID			SMALLINT UNSIGNED NOT NULL,
     PositionID				SMALLINT UNSIGNED NOT NULL,
-    CreateDate    			DATETIME  DEFAULT NOW(),
+    CreateDate    			DATETIME  NOT NULL,
     FOREIGN KEY (DepartmentID) REFERENCES Department (DepartmentID),
     FOREIGN KEY (PositionID)	REFERENCES `position`(PositionID)
 );
@@ -37,7 +37,7 @@ DROP TABLE IF EXISTS GroupAccount ;
 CREATE TABLE GroupAccount (
 	GroupID 		SMALLINT UNSIGNED NOT NULL,
     AccountID 		SMALLINT NOT NULL   ,
-    JoinDate		DATETIME DEFAULT NOW(),
+    JoinDate		DATETIME  NOT NULL,
     PRIMARY KEY (GroupID,AccountID),
     FOREIGN KEY (GroupID)	REFERENCES `Group`(GroupID)
 );
@@ -58,7 +58,7 @@ CREATE TABLE Question (
     CategoryID		SMALLINT UNSIGNED NOT NULL ,
     TypeID		 	SMALLINT UNSIGNED NOT NULL,
     CreatorID		SMALLINT UNSIGNED NOT NULL ,
-    CreateDate		DATETIME DEFAULT NOW(),
+    CreateDate		DATETIME  NOT NULL,
     FOREIGN KEY (CategoryID) REFERENCES CategoryQuestion (CategoryID),
     FOREIGN KEY (TypeID) 	 REFERENCES TypeQuestion (TypeID),
     FOREIGN KEY (CreatorID)  REFERENCES `Account` (AccountID)
@@ -79,7 +79,7 @@ CREATE TABLE Exam (
     CategoryID		SMALLINT UNSIGNED NOT NULL,
     Duration		SMALLINT UNSIGNED NOT NULL,
     CreatorID		SMALLINT UNSIGNED NOT NULL,
-    CreateDate		DATETIME DEFAULT NOW(),
+    CreateDate		DATETIME  NOT NULL,
     FOREIGN KEY (CategoryID) REFERENCES CategoryQuestion (CategoryID),
     FOREIGN KEY (CreatorID) REFERENCES `Account` (AccountID)
 );
@@ -199,17 +199,17 @@ VALUES
 
 INSERT INTO Answer		(  Content	, QuestionID , isCorrect	)
 VALUES 		
-						(N'Answer1'	,    1		 ,	0		),
-						(N'Answer2'	,    2		 ,	1		),
-						(N'Answer3'	,    3		 ,	0		),
-						(N'Answer4'	,    4		 ,	1		),
-						(N'Answer5'	,    5		 ,	1		),
-						(N'Answer6'	,    6		 ,	1		),
-						(N'Answer7'	,    7		 ,	1		),
-						(N'Answer8'	,    8		 ,	1		),
-						(N'Answer9'	,    9		 ,	1		),
-						(N'Answer10',    10		 ,	0		),
-						(N'Answer11',    11		 ,	0		);
+						(N'Answer1'	,    1		 ,	'T'		),
+						(N'Answer2'	,    2		 ,	'F'		),
+						(N'Answer3'	,    3		 ,	'T'		),
+						(N'Answer4'	,    4		 ,	'T'		),
+						(N'Answer5'	,    5		 ,	'F'		),
+						(N'Answer6'	,    6		 ,	'F'		),
+						(N'Answer7'	,    7		 ,	'T'		),
+						(N'Answer8'	,    8		 ,	'T'		),
+						(N'Answer9'	,    9		 ,	'T'		),
+						(N'Answer10',    10		 ,	'F'		),
+						(N'Answer11',    11		 ,	'T'		);
 
 INSERT INTO Exam	(`Code`			, Title						, CategoryID	, Duration		, CreatorID		, CreateDate )
 VALUES 			
