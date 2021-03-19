@@ -16,12 +16,12 @@ CREATE TABLE `position` (
 DROP TABLE IF EXISTS `Account` ;
 CREATE TABLE  `Account` (
 	AccountID				SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    Email					VARCHAR(50) NOT NULL UNIQUE KEY,
+    Email					VARCHAR(50) UNIQUE KEY DEFAULT('Unknown'),
     Username				NVARCHAR(50) NOT NULL CHECK (length(Username)>=3),
     FullName				NVARCHAR(50) NOT NULL,
     DepartmentID			SMALLINT UNSIGNED NOT NULL,
     PositionID				SMALLINT UNSIGNED NOT NULL,
-    CreateDate    			DATETIME  DEFAULT NOW(),
+    CreateDate    			DATETIME NOT NULL ,
     FOREIGN KEY (DepartmentID) REFERENCES Department (DepartmentID),
     FOREIGN KEY (PositionID)	REFERENCES `position`(PositionID)
 );
@@ -30,14 +30,14 @@ CREATE TABLE `Group` (
 	GroupID 		SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY ,
     GroupName 		NVARCHAR(50) NOT NULL UNIQUE KEY CHECK (length(GroupName)>=3),
     CreatorID		SMALLINT UNSIGNED NOT NULL,
-    CreateDate		DATETIME DEFAULT NOW(),
+    CreateDate		DATETIME NOT NULL ,
     FOREIGN KEY (CreatorID)	REFERENCES `Account`(AccountID)
 );
 DROP TABLE IF EXISTS GroupAccount ;
 CREATE TABLE GroupAccount (
 	GroupID 		SMALLINT UNSIGNED NOT NULL,
     AccountID 		SMALLINT NOT NULL   ,
-    JoinDate		DATETIME DEFAULT NOW(),
+    JoinDate		DATETIME NOT NULL ,
     PRIMARY KEY (GroupID,AccountID),
     FOREIGN KEY (GroupID)	REFERENCES `Group`(GroupID)
 );
@@ -58,7 +58,7 @@ CREATE TABLE Question (
     CategoryID		SMALLINT UNSIGNED NOT NULL ,
     TypeID		 	SMALLINT UNSIGNED NOT NULL,
     CreatorID		SMALLINT UNSIGNED NOT NULL ,
-    CreateDate		DATETIME DEFAULT NOW(),
+    CreateDate		DATETIME NOT NULL,
     FOREIGN KEY (CategoryID) REFERENCES CategoryQuestion (CategoryID),
     FOREIGN KEY (TypeID) 	 REFERENCES TypeQuestion (TypeID),
     FOREIGN KEY (CreatorID)  REFERENCES `Account` (AccountID)
@@ -68,7 +68,7 @@ CREATE TABLE Answer (
 	AnswerID 		SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     Content 		VARCHAR(100) NOT NULL,
     QuestionID		SMALLINT UNSIGNED NOT NULL,
-    isCorrect		BIT NOT NULL,
+    isCorrect		ENUM('T','F'),
     FOREIGN KEY (QuestionID) REFERENCES Question (QuestionID)
 );
 DROP TABLE IF EXISTS Exam ;
@@ -79,7 +79,7 @@ CREATE TABLE Exam (
     CategoryID		SMALLINT UNSIGNED NOT NULL,
     Duration		SMALLINT UNSIGNED NOT NULL,
     CreatorID		SMALLINT UNSIGNED NOT NULL,
-    CreateDate		DATETIME DEFAULT NOW(),
+    CreateDate		DATETIME NOT NULL,
     FOREIGN KEY (CategoryID) REFERENCES CategoryQuestion (CategoryID),
     FOREIGN KEY (CreatorID) REFERENCES `Account` (AccountID)
 );
@@ -118,15 +118,15 @@ VALUES
 
 INSERT INTO `Account` 	(Email						, Username		, FullName						, DepartmentID		, PositionID	, CreateDate)
 VALUES			
-						('MinhNhat12pv@gmail.com'	, 'Tong'		, 'Tong Minh Nhat'				, 		3			, 		3		, '2021-3-15' ),
-						('DangKhoa@gmail.com'		, 'Tran'		, 'Tran Dang Khoa'				, 		2			, 		4		, '2021-3-18' ),
-						('NguyenGiang@gmail.com'	, 'Nguyen'		, 'Nguyen Tran An Giang'		, 		4			, 		1		, '2021-2-15' ),
+						('MinhNhat12pv@gmail.com'	, 'Tòng'		, 'Tòng Minh Nhật'				, 		3			, 		3		, '2021-3-15' ),
+						('DangKhoa@gmail.com'		, 'Tran'		, 'Trần Đăng Khoa'				, 		2			, 		4		, '2021-3-18' ),
+						('NguyenGiang@gmail.com'	, 'Nguyễn'		, 'Nguyễn Hữu Đa'				, 		4			, 		1		, '2021-2-15' ),
                         ('Test1111@gmail.com'		, 'Quang'		, 'Quang Thi Xao'				, 		1			, 		3		, '2021-2-16' ),
-						('ThanhdatGamer@gmail.com'	, 'Tran'		, 'Tran Thanh Dat'				, 		7			, 		1		, '2021-3-17' ),
+						('ThanhdatGamer@gmail.com'	, 'Tran'		, 'Trần Thành Đạt'				, 		7			, 		1		, '2021-3-17' ),
 						('NguyenMinh@gmail.com'		, 'Nguyen'		, 'Nguyen Dang Minh'			, 		5			, 		2		, '2021-2-15' ),
-                        ('AduDarkwa@gmail.com'		, 'Bui'			, 'Bui Minh Chau'				, 		9			, 		3		, '2021-2-19' ),
+                        ('AduDarkwa@gmail.com'		, 'Bùi'			, 'Bui Minh Chau'				, 		9			, 		3		, '2021-2-19' ),
 						('Yassuo@gmail.com'			, 'Ngo'			, 'Ngo Van Huy'					, 		6			, 		1		, '2021-3-20' ),
-						('GenShinImpact@gmail.com'	, 'Hoang'		, 'Hoang Sanh Chau'				, 		10			, 		2		, '2021-3-15' ),
+						('GenShinImpact@gmail.com'	, 'WiBu'		, 'WibuLỏd'						, 		10			, 		2		, '2021-3-15' ),
 						('DeadNote@gmail.com'		, 'Nguyen'		, 'Nguyen Thao My'				, 		8			, 		1		, '2021-4-17' );	
  
  
@@ -199,17 +199,17 @@ VALUES
 
 INSERT INTO Answer		(  Content	, QuestionID , isCorrect	)
 VALUES 		
-						(N'Answer1'	,    1		 ,	0		),
-						(N'Answer2'	,    2		 ,	1		),
-						(N'Answer3'	,    3		 ,	0		),
-						(N'Answer4'	,    4		 ,	1		),
-						(N'Answer5'	,    5		 ,	1		),
-						(N'Answer6'	,    6		 ,	1		),
-						(N'Answer7'	,    7		 ,	1		),
-						(N'Answer8'	,    8		 ,	1		),
-						(N'Answer9'	,    9		 ,	1		),
-						(N'Answer10',    10		 ,	0		),
-						(N'Answer11',    11		 ,	0		);
+						(N'Answer1'	,    1		 ,	'T'		),
+						(N'Answer2'	,    2		 ,	'F'		),
+						(N'Answer3'	,    3		 ,	'T'		),
+						(N'Answer4'	,    4		 ,	'T'		),
+						(N'Answer5'	,    5		 ,	'F'		),
+						(N'Answer6'	,    6		 ,	'F'		),
+						(N'Answer7'	,    7		 ,	'T'		),
+						(N'Answer8'	,    8		 ,	'T'		),
+						(N'Answer9'	,    9		 ,	'T'		),
+						(N'Answer10',    10		 ,	'F'		),
+						(N'Answer11',    11		 ,	'T'		);
 
 INSERT INTO Exam	(`Code`			, Title						, CategoryID	, Duration		, CreatorID		, CreateDate )
 VALUES 			
