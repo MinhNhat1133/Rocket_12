@@ -16,12 +16,20 @@ CREATE TABLE `position` (
 DROP TABLE IF EXISTS `Account` ;
 CREATE TABLE  `Account` (
 	AccountID				SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+<<<<<<< HEAD
     Email					VARCHAR(50) UNIQUE KEY DEFAULT('Unknown'),
+=======
+    Email					VARCHAR(50) UNIQUE KEY DEFAULT('Unknown'), 
+>>>>>>> 31b2bb7557b5e1c0b3836d2f3055cc906e0e6102
     Username				NVARCHAR(50) NOT NULL CHECK (length(Username)>=3),
     FullName				NVARCHAR(50) NOT NULL,
     DepartmentID			SMALLINT UNSIGNED NOT NULL,
     PositionID				SMALLINT UNSIGNED NOT NULL,
+<<<<<<< HEAD
     CreateDate    			DATETIME NOT NULL ,
+=======
+    CreateDate    			DATETIME  NOT NULL,
+>>>>>>> 31b2bb7557b5e1c0b3836d2f3055cc906e0e6102
     FOREIGN KEY (DepartmentID) REFERENCES Department (DepartmentID),
     FOREIGN KEY (PositionID)	REFERENCES `position`(PositionID)
 );
@@ -37,7 +45,11 @@ DROP TABLE IF EXISTS GroupAccount ;
 CREATE TABLE GroupAccount (
 	GroupID 		SMALLINT UNSIGNED NOT NULL,
     AccountID 		SMALLINT NOT NULL   ,
+<<<<<<< HEAD
     JoinDate		DATETIME NOT NULL ,
+=======
+    JoinDate		DATETIME  NOT NULL,
+>>>>>>> 31b2bb7557b5e1c0b3836d2f3055cc906e0e6102
     PRIMARY KEY (GroupID,AccountID),
     FOREIGN KEY (GroupID)	REFERENCES `Group`(GroupID)
 );
@@ -58,7 +70,11 @@ CREATE TABLE Question (
     CategoryID		SMALLINT UNSIGNED NOT NULL ,
     TypeID		 	SMALLINT UNSIGNED NOT NULL,
     CreatorID		SMALLINT UNSIGNED NOT NULL ,
+<<<<<<< HEAD
     CreateDate		DATETIME NOT NULL,
+=======
+    CreateDate		DATETIME  NOT NULL,
+>>>>>>> 31b2bb7557b5e1c0b3836d2f3055cc906e0e6102
     FOREIGN KEY (CategoryID) REFERENCES CategoryQuestion (CategoryID),
     FOREIGN KEY (TypeID) 	 REFERENCES TypeQuestion (TypeID),
     FOREIGN KEY (CreatorID)  REFERENCES `Account` (AccountID)
@@ -79,7 +95,11 @@ CREATE TABLE Exam (
     CategoryID		SMALLINT UNSIGNED NOT NULL,
     Duration		SMALLINT UNSIGNED NOT NULL,
     CreatorID		SMALLINT UNSIGNED NOT NULL,
+<<<<<<< HEAD
     CreateDate		DATETIME NOT NULL,
+=======
+    CreateDate		DATETIME  NOT NULL,
+>>>>>>> 31b2bb7557b5e1c0b3836d2f3055cc906e0e6102
     FOREIGN KEY (CategoryID) REFERENCES CategoryQuestion (CategoryID),
     FOREIGN KEY (CreatorID) REFERENCES `Account` (AccountID)
 );
