@@ -1,7 +1,7 @@
 -- Tạo database,
-DROP DATABASE IF EXISTS Testingsystem;
-CREATE DATABASE Testingsystem;
-USE Testingsystem;
+DROP DATABASE IF EXISTS Testingsystem1;
+CREATE DATABASE Testingsystem1;
+USE Testingsystem1;
 -- Tạo bảng 
 DROP TABLE IF EXISTS Department ;
 CREATE TABLE Department (
