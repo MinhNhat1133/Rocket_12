@@ -11,7 +11,7 @@ WHERE DepartmentName = 'sale' ;
 -- Question 3: lấy ra thông tin account có full name dài nhất
 SELECT * 
 FROM testingsystem.`Account` 
-WHERE length(FullName) = (SELECT max(length(fullname)) FROM testingsystem.`account` );
+WHERE length(FullName) = (SELECT max(char_length(fullname)) FROM testingsystem.`account` );
 
 -- Question 4: Lấy ra tên group đã tham gia trước ngày 20/12/2019
 SELECT GroupName 
@@ -70,7 +70,7 @@ ON 			Q.QuestionID = EQ.QuestionID
 GROUP BY	EQ.QuestionID
 HAVING 		count(EQ.questionID) = (SELECT MAX(A) AS  'MaxQuestion'
 FROM (SELECT COUNT(QuestionID) AS A
-FROM 		ExamQuestion   
+FROM 		testingsystem.ExamQuestion   
 GROUP BY	QuestionID) AS Soluong );
 
 -- Question 14: Thông kê mỗi category Question được sử dụng trong bao nhiêu Question
@@ -100,6 +100,20 @@ FROM (SELECT COUNT(PositionID) AS A
 FROM 	 	testingsystem.`account`   
 GROUP BY	PositionID) AS Soluong );
 -- Question 17: Thống kê mỗi phòng ban có bao nhiêu dev, test, scrum master, PM 
+	SELECT 
+    b.DepartmentName,
+	c.PositionName,
+	count(*) AS total 
+FROM 
+	testingsystem.`Account` a 
+	LEFT JOIN testingsystem.Department b ON a.DepartmentID = b.DepartmentID
+	LEFT JOIN testingsystem.Position c ON a.PositionID = c.PositionID
+GROUP BY
+	b.DepartmentName,
+	c.PositionName
+ORDER BY 
+b.DepartmentName,
+	c.PositionName;
 
 --  Question 18: Lấy thông tin chi tiết của câu hỏi bao gồm: thông tin cơ bản của question, loại câu hỏi, ai là người tạo ra câu hỏi, câu trả lời là gì, …
 SELECT 		AC.AccountID as 'ID NguoiTaoCauHoi',AC.FullName as 'TenNguoiTaoCauHoi', Q.QuestionID AS 'ID CauHoi', Q.Content AS 'NoiDungCauHoi', T.TypeName AS 'LoaiCauHoi', A.Content AS 'CauTraLoi', Q.CreateDate AS 'NgayTaoCauHoi'
