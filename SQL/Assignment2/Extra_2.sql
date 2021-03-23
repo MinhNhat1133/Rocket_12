@@ -153,4 +153,8 @@ ON  D.Department_Number = ET.Department_Number;
  JOIN Employee_Skill_Table EST
  on ET.Employee_Number = EST.Employee_Number
  GROUP BY EST.Employee_Number
+<<<<<<< HEAD
  HAVING count(EST.Employee_Number) > 1 
+=======
+ HAVING count(EST.Employee_Number) > 1 
+>>>>>>> dfd18fff14042a33854056c7188901695073d6a2
