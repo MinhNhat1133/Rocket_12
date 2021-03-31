@@ -87,7 +87,7 @@ BEGIN
 		WHERE		W.ModuleID = (SELECT moduleID FROM Project_D ) ;
 END$$
 DELIMITER $$
-CALL test.DELETE_project();-- ??????????????????
+CALL test.DELETE_project();
 
 -- Viết stored procedure (có parameter) để in ra các module đang được thực hiện)
 USE test;
@@ -115,19 +115,20 @@ call SELECT_work(2);
 -- Viết hàm (có parameter) trả về thông tin 1 nhân viên đã tham gia làm co nguoi giao việc cho nhân viên đó 
 -- Va in ca thong tin cua supervisorID cua nguoi do 
 USE test;
-DROP PROCEDURE IF EXISTS SELECT_work2;
+DROP PROCEDURE IF EXISTS SELECT_work1;
 DELIMITER $$
-CREATE PROCEDURE SELECT_work2(IN id_employee INT )
+CREATE PROCEDURE SELECT_work1(IN id_employee INT )
 BEGIN
-		WITH in4_Supervisor AS (
-		SELECT		EmployeeID 
-		FROM		work_done
-		WHERE      ModuleID IS NOT NULL
-         
-    )
-	SELECT 		*
-    FROM		employee E JOIN Work_done W ON W.EmployeeID = E.employeeID
-	WHERE		E.EmployeeID IN  (Select * FROM in4_Supervisor ) ;
-END$$
+SELECT
+	t.EmployeeID,
+	CONCAT(t.EmployeeLastName,' ', t.EmployeeFirstName) as 'fullname',
+	t.EmployeeHireDate,
+	t.SupervisorID,
+	(SELECT CONCAT(EmployeeLastName,' ', EmployeeFirstName) FROM employee WHERE EmployeeID = t.SupervisorID) AS SuperviorName
+FROM employee t
+WHERE
+	SupervisorID is not null 
+	AND EmployeeID IN (SELECT EmployeeID FROM work_done);
+    END$$
 DELIMITER $$
-call SELECT_work2(2)
+call SELECT_work1 (1)
