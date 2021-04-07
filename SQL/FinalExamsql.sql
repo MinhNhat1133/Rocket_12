@@ -87,12 +87,14 @@ BEGIN
 	IF NEW.location_ID IN (SELECT location_ID
 					    FROM Employee
 					    GROUP BY location_ID
-                        HAVING COUNT(location_ID) = 10 ) THEN
+                        HAVING COUNT(location_ID) = 2 ) THEN
 	SIGNAL SQLSTATE '12345' 
 	SET MESSAGE_TEXT = 'THIS COUNTRY CAN NOT BE ADDED MORE THAN 10 EMPLOYEE';
     END IF;
 END $$
 DELIMiTER $$
+INSERT INTO thuctap.employee (location_ID)
+VALUES (9)
 -- Hãy cấu hình table sao cho khi xóa 1 location nào đó thì tất cả employee ở location đó sẽ có location_id = null
 DROP TRIGGER IF EXISTS delete_location;
 DELIMITER $$
