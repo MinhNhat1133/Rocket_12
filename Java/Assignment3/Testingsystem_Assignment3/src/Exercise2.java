@@ -2,8 +2,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Exercise2 {
-public static void main(String[] args) {
-	//======= Question1 =======//
+	public static void main(String[] args) {
+		Q1();
+	}
+
+public static void Q1 (){
 	Account[] account =  new Account[5];
 	for(int i=1; i< account.length ; i++){
 		account[i] = new Account();
@@ -19,6 +22,6 @@ public static void main(String[] args) {
 		System.out.println("UserName: "+ account[i].userName);
 		System.out.println("FullName: "+ account[i].fullName);
 		System.out.println("CreateDate: "+date);
-	}
+		}
 	}
 }
