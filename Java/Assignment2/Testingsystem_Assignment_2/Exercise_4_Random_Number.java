@@ -20,9 +20,9 @@ public static void main(String[] args) {
 	System.out.println(y);
 	
 	//question3:
-	String a[] = {"nam","Nguyet","thu","Hang"};
+	String[] a = {"nam","Nguyet","thu","Hang"};
 	int i = random.nextInt(a.length);
-	System.out.println(a[1]);
+	System.out.println(a[i]);
 	
 	//question4:
 	int minDay = (int) LocalDate.of(1995,07,24).toEpochDay();
@@ -34,9 +34,7 @@ public static void main(String[] args) {
 	//quetion5:
 	//?????;
 	
-	//quetion7:
-	int h = random.nextInt( 999 - 100 + 1 ) + 99;
-	System.out.println(h);
+	
 
 	
 }

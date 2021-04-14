@@ -1,5 +1,7 @@
 package program;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 public class Exercise_2_System_out_printf {
@@ -22,7 +24,10 @@ public class Exercise_2_System_out_printf {
 	System.out.printf("Ten toi la " + x + " va toi ðang ðoc than ");
 	
 	//Question5:
-	//???
+	String pattern = "dd/MM/yyyy HH:mm:ss";
+	SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+	String date = simpleDateFormat.format(new Date());
+	System.out.println(date);
 	
 
 }}

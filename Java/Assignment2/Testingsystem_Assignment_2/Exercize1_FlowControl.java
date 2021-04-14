@@ -387,15 +387,12 @@ public class Exercize1_FlowControl {
 		}
 		
 		//Question16_c15:
-		i = 2;
-		while (i<=20){
-			System.out.println(i);
-			i = i+2;
+		
 		}
 		
 		
 		
 	}
-	}
+	
 		
 
