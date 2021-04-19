@@ -10,9 +10,9 @@ public static void Q1 (){
 	Account[] account =  new Account[5];
 	for(int i=1; i< account.length ; i++){
 		account[i] = new Account();
-		account[i].email = "Email" + i;
-		account[i].userName= "User name"+ i;
-		account[i].fullName ="Full name" + i;
+		account[i].email = "Email " + i;
+		account[i].userName= "User name "+ i;
+		account[i].fullName ="Full name " + i;
 		String createDate = "dd/MM/yyyy HH:mm:ss";
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(createDate);
 		String date = simpleDateFormat.format(new Date());
