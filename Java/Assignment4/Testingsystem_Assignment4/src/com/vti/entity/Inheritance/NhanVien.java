@@ -9,5 +9,10 @@ public class NhanVien extends CanBo {
 		return congViec;
 	}
 
+	public NhanVien(int id, String hoTen, byte tuoi, Gender gioiTinh, String diaChi,String congViec) {
+		super(id, hoTen, tuoi,gioiTinh,diaChi);
+		this.congViec = congViec;
+	}
+
 
 }

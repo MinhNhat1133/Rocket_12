@@ -3,11 +3,17 @@ package com.vti.entity.Inheritance;
 
 public class CongNhan extends CanBo {
 
-	private byte bac;
+	private short bac;
 
-	public byte getBac() {
+	public CongNhan(int id, String hoTen, byte tuoi, Gender gioiTinh, String diaChi,short bac) {
+		super( id, hoTen, tuoi,gioiTinh,diaChi);
+		this.bac = bac;
+	}
+	public short getBac() {
 		return bac;
 	}
-
+	public void setBac(short bac) {
+		this.bac = bac;
+	}
 
 }
