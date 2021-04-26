@@ -47,6 +47,7 @@ public class QuanLyThuVien {
 		}
 
 	}
+
 	public void TimTaiLieuTheoTungLoai() {
 		Scanner scanner = new Scanner(System.in);
 
