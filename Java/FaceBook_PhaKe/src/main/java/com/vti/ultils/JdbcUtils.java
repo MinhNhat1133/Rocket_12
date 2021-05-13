@@ -40,6 +40,8 @@ public class JdbcUtils {
 
 		return connection;
 	}
-
+	public void disconnect() throws SQLException {
+		connection.close();
+	}
 
 }

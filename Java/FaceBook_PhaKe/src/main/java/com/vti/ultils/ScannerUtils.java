@@ -91,4 +91,14 @@ public class ScannerUtils {
 		}
 	}
 
+	public static int inputFunction(int a, int b, String errorMessage) {
+		while (true) {
+			int number = ScannerUtils.inputInt(errorMessage);
+			if (number >= a && number <= b) {
+				return number;
+			} else {
+				System.err.println(errorMessage);
+			}
+		}
+	}
 }

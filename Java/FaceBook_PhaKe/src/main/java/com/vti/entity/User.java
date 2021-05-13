@@ -6,7 +6,7 @@ public class User {
 	private String email;
 	private int age;
 	private String password;
-	public User() {
+	public User(int i, String string) {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -18,6 +18,20 @@ public class User {
 		this.password = password;
 	}
 
+	public User(String string, String string2) {
+		// TODO Auto-generated constructor stub
+	}
+	public User(int id, String userName, String email, int age) {
+		this.id =id;
+		this.userName = userName;
+		this.email = email;
+		this.age = age;
+	}
+	public User(int int1, String string, String string2) {
+		this.id = int1;
+		this.userName =string;
+		this.email =string2;
+	}
 	public int getId() {
 		return id;
 	}
@@ -50,7 +64,10 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", userName=" + userName + ", email=" + email + ", age=" + age + ", password=" + password
-				+ "]";
+		return "User [id=" + id + ", userName=" + userName + ", email=" + email + ", age=" + age ;
 	}
+	public String toStringIdandName() {
+		return "ID : " + id +" || "+"UserName :" + userName ;
+	}
+
 }
