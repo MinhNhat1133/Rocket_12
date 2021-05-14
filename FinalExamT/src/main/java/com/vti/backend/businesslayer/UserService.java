@@ -18,35 +18,11 @@ public class UserService implements IUserService {
 		userRepository = new UserRepository();
 	}
 
-	public User login(String email, String password) {
-		// TODO Auto-generated method stub
 
-		try {
-			return userRepository.login(email, password);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-
-	}
-
-	public List<User> getListUsers(int id) {
+	public User dangNhap(String email, String passWord) {
 		// TODO Auto-generated method stub
 		try {
-			return userRepository.getListUsers(id);
+			return userRepository.dangNhap(email,passWord);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -63,7 +39,30 @@ public class UserService implements IUserService {
 		return null;
 	}
 
-	public List<Manager> getAllManager() {
+
+
+	public List<User> getListUserByProID(int projectId) {
+		// TODO Auto-generated method stub
+		try {
+			return userRepository.getListUserByProID(projectId);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+
+	public List<User> getAllmanager() {
 		// TODO Auto-generated method stub
 		try {
 			return userRepository.getAllManager();

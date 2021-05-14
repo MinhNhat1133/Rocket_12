@@ -6,10 +6,13 @@ import com.vti.entity.Manager;
 import com.vti.entity.User;
 
 public interface IUserService {
-	User login(String email, String password);
 
-	List<User> getListUsers(int id);
+	User dangNhap(String email, String passWord);
 
-	List<Manager> getAllManager();
+
+	List<User> getListUserByProID(int projectId);
+
+
+	List<User> getAllmanager();
 
 }

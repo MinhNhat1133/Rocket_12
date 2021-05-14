@@ -10,11 +10,10 @@ import com.vti.entity.User;
 
 public interface IUserRepository {
 
+	User dangNhap(String email, String passWord) throws ClassNotFoundException, FileNotFoundException, SQLException, IOException;
 
-	User login(String email, String password) throws ClassNotFoundException, FileNotFoundException, SQLException, IOException, Exception;
+	List<User> getListUserByProID(int projectId) throws ClassNotFoundException, FileNotFoundException, SQLException, IOException;
 
-	List<User> getListUsers(int id) throws ClassNotFoundException, FileNotFoundException, SQLException, IOException;
-
-	List<Manager> getAllManager() throws ClassNotFoundException, FileNotFoundException, SQLException, IOException;
+	List<User> getAllManager() throws ClassNotFoundException, FileNotFoundException, SQLException, IOException;
 
 }

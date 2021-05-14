@@ -16,20 +16,22 @@ public class UserController {
 	}
 
 
-	public User login(String email, String password) {
+	public User dangNhap(String email, String passWord) {
 		// TODO Auto-generated method stub
-		return userService.login(email,password);
-	}
-
-	public List<User> getListUsers(int id) {
-		// TODO Auto-generated method stub
-		return userService.getListUsers(id);
+		return userService.dangNhap(email,passWord);
 	}
 
 
-	public List<Manager> getAllManager() {
+
+	public static List<User> getListUserByProID(int projectId) {
 		// TODO Auto-generated method stub
-		return userService.getAllManager();
+	 return userService.getListUserByProID(projectId);
+	}
+
+
+	public List<User> getAllManager() {
+		// TODO Auto-generated method stub
+		return userService.getAllmanager();
 	}
 
 }
