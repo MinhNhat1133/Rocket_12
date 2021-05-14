@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.vti.entity.Manager;
 import com.vti.entity.Project;
 import com.vti.entity.Role;
 import com.vti.entity.User;
@@ -60,10 +61,10 @@ public class UserRepository implements IUserRepository {
 		return users;
 	}
 
-	public List<User> getAllManager() throws ClassNotFoundException, FileNotFoundException, SQLException, IOException {
+	public List<Manager> getAllManager() throws ClassNotFoundException, FileNotFoundException, SQLException, IOException {
 		jd.connect();
 		Connection connection = jd.connect();
-		List<User> users = new ArrayList<User>();
+		List<Manager> managers = new ArrayList<Manager>();
 		String sql = "SELECT 	pau.projectId, u.`fullName`, pau.`Role`	" + "FROM	`ProjectAndUser` pau"
 				+ "JOIN	`User` u	ON u.id = pau.userId" + "WHERE	`Role` = 'MANAGER';";
 		Statement statement = connection.createStatement();
@@ -73,9 +74,9 @@ public class UserRepository implements IUserRepository {
 			String username = resultSet.getNString(2);
 			String email = resultSet.getString(3);
 			User user = new User(id, username, email);
-			users.add(user);
+			managers.add((Manager) user);
 		}
-		return users;
+		return managers;
 	}
 
 }

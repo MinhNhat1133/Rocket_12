@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.vti.backend.presentation.UserController;
+import com.vti.entity.Manager;
 import com.vti.entity.Project;
 import com.vti.entity.User;
 import com.vti.utils.JdbcUtils;
@@ -63,7 +64,7 @@ public class FinalExamProgram {
 	}
 
 	private static void getAllManager() {
-		List<User> users = userContronller.getAllManager();
+		List<Manager> users = userContronller.getAllManager();
 		for (User user : users) {
 			System.out.println(user.toString());
 		}

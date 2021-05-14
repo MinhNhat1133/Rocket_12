@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.vti.entity.Manager;
 import com.vti.entity.User;
 
 public interface IUserRepository {
@@ -14,6 +15,6 @@ public interface IUserRepository {
 
 	List<User> getListUsers(int id) throws ClassNotFoundException, FileNotFoundException, SQLException, IOException;
 
-	List<User> getAllManager() throws ClassNotFoundException, FileNotFoundException, SQLException, IOException;
+	List<Manager> getAllManager() throws ClassNotFoundException, FileNotFoundException, SQLException, IOException;
 
 }

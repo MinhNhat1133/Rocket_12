@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.vti.backend.datalayer.IUserRepository;
 import com.vti.backend.datalayer.UserRepository;
+import com.vti.entity.Manager;
 import com.vti.entity.User;
 
 public class UserService implements IUserService {
@@ -62,7 +63,7 @@ public class UserService implements IUserService {
 		return null;
 	}
 
-	public List<User> getAllManager() {
+	public List<Manager> getAllManager() {
 		// TODO Auto-generated method stub
 		try {
 			return userRepository.getAllManager();

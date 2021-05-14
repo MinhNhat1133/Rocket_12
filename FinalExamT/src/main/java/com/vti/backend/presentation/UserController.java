@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.vti.backend.businesslayer.IUserService;
 import com.vti.backend.businesslayer.UserService;
+import com.vti.entity.Manager;
 import com.vti.entity.User;
 
 public class UserController {
@@ -26,7 +27,7 @@ public class UserController {
 	}
 
 
-	public List<User> getAllManager() {
+	public List<Manager> getAllManager() {
 		// TODO Auto-generated method stub
 		return userService.getAllManager();
 	}

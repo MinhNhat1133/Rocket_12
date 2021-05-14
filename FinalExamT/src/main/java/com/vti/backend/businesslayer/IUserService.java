@@ -2,6 +2,7 @@ package com.vti.backend.businesslayer;
 
 import java.util.List;
 
+import com.vti.entity.Manager;
 import com.vti.entity.User;
 
 public interface IUserService {
@@ -9,6 +10,6 @@ public interface IUserService {
 
 	List<User> getListUsers(int id);
 
-	List<User> getAllManager();
+	List<Manager> getAllManager();
 
 }
