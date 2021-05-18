@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"> 
+        <title>Exercise 2_Question4</title>
+    </head>
+    <body>
+        <!--FORM-->
+        <h2>Register</h2>
+        <p><i>please<b> fill in this form</b> to create an account</i></p>
+        <form action="/action_page.php">
+            Full name: <br>
+            <input type="text" name="fullname"  placeholder="Input your fullname..." required> <br>
+            User name <br>
+            <input type="text" name="username" placeholder="Input your username..." required> <br>
+            Password <br>
+            <input type="password" name="password" placeholder="Input your password..." required> <br>
+            Email <br>
+            <input type="email" name="" id="" placeholder="INput your Email..." required> <br>
+            Telephone number <br>
+            <input type="tel" name="telephone" placeholder="Input your phonenumber..." pattern="[0-9]" maxlength="11" required>
+            <br>
+            <br>
+            Input Object: <br>
+            <input type="radio" name="object" value="student" checked>Student
+            <input type="radio" name="object" value="teatcher">Teatcher <br>
+            <br>
+            Favorist: <br>
+            <input type="checkbox" name="" value="badminton"> Badminton
+            <input type="checkbox" name="" value="volleyball">Volleyball
+            <input type="checkbox" name="" value="foodball">Foodball <br>
+            <br>
+            Address: <br>
+            <select name="Address" id="">
+                <option value="Hanoi">Hà Nội</option>
+                <option value="TpHCM">Tp HCM</option>
+                <option value="Angiang">An Giang</option>
+                <option value="DaNang">Đà Nẵng</option>
+                <option value="Cantho">Cần Thơ</option>
+                <option value="BacGiang" selected>Bắc giang</option>
+            </select> <br>
+            <br>
+            Birthday <br>
+            <input type="date" name="Birthday" id=""><br>
+            <br>
+            Your picture: <br>
+            <input type="file" name="pic" id="" accept="image/*" ><br>
+            <br>
+            <input type="submit" value="đăng kí"> 
+        </form>
+    </body>
+</html>
