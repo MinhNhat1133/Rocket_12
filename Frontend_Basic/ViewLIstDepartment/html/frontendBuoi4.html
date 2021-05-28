@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>FrontEndBuoi4</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- import JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- import bootstrap -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- import css -->
+    <link rel="stylesheet" href="../css/program.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/table.css">
+    <link rel="stylesheet" href="../css/modal.css">
+
+
+
+    <style>
+        #btn_circle {
+            -moz-border-radius: 50px/50px;
+            -webkit-border-radius: 50px 50px;
+            border-radius: 50px/50px;
+            border: solid 21px #f00;
+            width: 50px;
+            height: 50px;
+        }
+
+        #btn_click {
+            background-color: blue;
+            color: aliceblue;
+        }
+        #btn_ani2 {
+            background-color: rgb(43, 165, 108);
+            color: aliceblue;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn_ani2">start animation </button>
+    <div id="btn_circle"></div>
+
+</body>
+
+<!-- import javascript -->
+<script src="../js/program.js"></script>
+
+<script>
+    $('#btn_ani2').click(function () {
+        $('#btn_circle').toggle();
+    });
+</script>
+
+</html>
